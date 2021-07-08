@@ -21,6 +21,9 @@ RUN chmod 0755 /usr/lib/cgi-bin/access.py
 
 COPY proxy.conf /etc/apache2/sites-available/proxy.conf
 
+ARG TARGET_HOST
+RUN sed -i "s/TARGET_HOST/${TARGET_HOST}/g" /etc/apache2/sites-available/proxy.conf
+
 RUN a2enmod ssl proxy proxy_http rewrite python headers
 
 RUN a2ensite proxy

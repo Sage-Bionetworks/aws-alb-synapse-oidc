@@ -48,10 +48,12 @@ def headerparserhandler(req):
 
     req.log_error(
         (
-            "authorized_teams (from " + authorized_teams_source +
-            "): " + str(authorized_teams)
+            "authorized_teams (from "
+            + authorized_teams_source
+            + "): "
+            + str(authorized_teams)
         ),
-        apache.APLOG_WARNING
+        apache.APLOG_WARNING,
     )
 
     if any(t in teams for t in authorized_teams):
