@@ -7,8 +7,8 @@ services:
       dockerfile: "Dockerfile"
     ports:
       - "443:443"
-      environment:
-        - AUTHORIZED_TEAMS=3391844,273957
+    environment:
+      - AUTHORIZED_TEAMS=3391844,273957
   demo-app:
     container_name: "demo-app"
     image: httpd:latest
