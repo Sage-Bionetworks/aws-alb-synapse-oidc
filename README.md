@@ -2,6 +2,8 @@
 
 This repository contains the instructions and files necessary to set up an AWS application load balancer (ALB) in front of a web app that restricts access to members of select Synapse teams. 
 
+Special credit goes to the team that worked on the Sage Service Catalog, which inspired this approach. The `access.py` and `proxy.conf` files were originally derived from this [repository](https://github.com/Sage-Bionetworks-IT/packer-rstudio/tree/master/src), and I was unknowingly relying on a pattern already in use [here](https://github.com/Sage-Bionetworks-IT/cfn-cr-alb-rule).
+
 ## Prerequisites
 
 - You have an AWS account with a VPC configured with both public and private subnets
