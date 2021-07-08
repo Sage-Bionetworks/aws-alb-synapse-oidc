@@ -45,6 +45,7 @@ def headerparserhandler(req):
     else:
         authorized_teams_source = "environment"
         authorized_teams = authorized_teams.split(",")
+        authorized_teams = [x.strip() for x in authorized_teams]
 
     req.log_error(
         (
