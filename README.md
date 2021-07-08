@@ -2,9 +2,13 @@
 
 This repository contains the instructions and files necessary to set up an AWS application load balancer in front of a web app that restricts access to members of select Synapse teams. 
 
+## Prerequisites
+
+- Foobar
+
 ## Step 1: Create a Synapse OAuth client
 
-The detailed instructions for creating a Synapse OAuth client can be found [here](https://help.synapse.org/docs/Using-Synapse-as-an-OAuth-Server.2048327904.html#UsingSynapseasanOAuthServer-CreateanOAuth2.0Client), but the essential steps are captured in the included `create_client.py` Python script. This step assumes that you already have an HTTPS URL for your web app and that you have Python 3 installed. You will also need to login with a Synapse account.
+The detailed instructions for creating a Synapse OAuth client can be found [here](https://help.synapse.org/docs/Using-Synapse-as-an-OAuth-Server.2048327904.html#UsingSynapseasanOAuthServer-CreateanOAuth2.0Client), but the essential steps are captured in the included `create_alb_oauth_client.py` Python script. This step assumes that you already have an HTTPS URL for your web app and that you have Python 3 installed. You will also need to login with a Synapse account.
 
 **N.B.** Don't forget the quotes around your app name if it includes spaces.
 
@@ -13,10 +17,10 @@ The detailed instructions for creating a Synapse OAuth client can be found [here
 # python3 -m venv .venv
 # source .venv/bin/activate
 python3 -m pip install synapseclient
-create_client.py "Demo App" "https://demo-app.sagesandbox.org"
+create_alb_oauth_client.py "Demo App" "https://demo-app.sagesandbox.org"
 ```
 
-Once you run the `create_client.py` script, you will need to verify the OAuth client by emailing `synapseinfo@sagebase.org` with the following information:
+Once you run the `create_alb_oauth_client.py` script, you will need to verify the OAuth client by emailing `synapseinfo@sagebase.org` with the following information:
 
 - Your name
 - The ID of the client to be verified (see script output)
@@ -82,8 +86,8 @@ This step and those that follow assume that you have an AWS account configured w
         - Authorization endpoint: `https://signin.synapse.org`
         - Token endpoint: `https://repo-prod.prod.sagebase.org/auth/v1/oauth2/token`
         - User info endpoint: `https://repo-prod.prod.sagebase.org/auth/v1/oauth2/userinfo`
-        - Client ID: See output from `create_client.py` script
-        - Client secret: See output from `create_client.py` script
+        - Client ID: See output from `create_alb_oauth_client.py` script
+        - Client secret: See output from `create_alb_oauth_client.py` script
         - Advanced settings:
             - Session cookie: `AWSELBAuthSessionCookie`
             - Session timeout: `604800`

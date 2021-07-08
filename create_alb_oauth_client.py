@@ -6,7 +6,10 @@
 # name, the client ID (see script output), and a description of your app.
 #
 # Usage:
-#   create_client.py app_name app_redirect_url
+#   create_alb_oauth_client.py app_name app_url
+#
+# Example:
+#   create_alb_oauth_client.py "Demo App" "https://demo-app.sagesandbox.org"
 
 import sys
 import json
@@ -14,7 +17,7 @@ import synapseclient
 
 # Define client attributes
 client_name = str(sys.argv[1])
-redirect_uri = str(sys.argv[2])
+redirect_uri = str(sys.argv[2]).rstrip("/") + "/oauth2/idpresponse"
 client = {
     "client_name": client_name,
     "redirect_uris": [redirect_uri],
